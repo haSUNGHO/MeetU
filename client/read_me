@@ -1,0 +1,23 @@
+패키지
+ React - > BrowserRouter 사용
+
+axios
+ - 
+ proxy
+ - 포트가 다를 경우  Cors 정책에 따라 연동이되지 않음 -> React-Proxy를 사용하여 포트 연결 허용(http-proxy-middleware)
+antd
+ - CSS Framework package
+
+redux
+#props = 부모 - 자식 컴포넌트간의 소통 (프롭스 값은 부모 자식간의 값을 다르게 사용할 수 없음.)
+#State = 특정 컴포넌트에서만 사용가능한영역 결과가 변경될 시 re-rander됨
+ - 상위 하위 컴포넌트 간의 간편한 소통 시스템 패키지
+  (redux가 존재하지 않으면, 하위3-> 최상위로 갈 경우, 하위3>하위2>하위1>최상위 식으로 소통해야함.)
+  react-redux
+   - 
+  redux-promise
+   - dispatch에게 promise가 응답받았을 때, 대처를 위한 미들웨어
+  redux-thunk
+   - dispatch에게 함수를 받는 방법을 알려줌
+  combine-reducer
+   - Store에서 사용하는 모든 변경점을 모두 rootReducer로 묶는 패키지

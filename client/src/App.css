@@ -1,0 +1,118 @@
+body{
+  margin : 0px;
+  height: 1200px;
+}
+section{
+  height: 100%;
+  width: 100%;
+  background: url(./img/Cheers-bkgr.gif) fixed;
+  opacity: 0.9;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+.header {
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  position : fixed;
+  top : 0;
+  left : 0;
+  right : 0;
+  z-index: 100;
+  
+  background-color: #21212100;
+  opacity: 1;    
+}
+.left-section {
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+.image-logo {
+  margin-left: 15px;
+  height: 100%;
+}
+.right-section {
+  width: 35%;
+  margin-top: 15px;
+  margin-right : 20px;
+  display : flex;
+  align-items: center;
+}
+.login-btn{
+  position: absolute;
+  height: 45px;
+  width : 70px;
+  right:15px;
+  background-color: #323232FF;
+  border : 1px solid #4d4d4d;
+  border-radius: 4px;
+  
+  color : #7d7d7d;
+}
+.text-contents{
+  position : fixed;
+ 
+  top: 200px;
+  margin-left : 80px;
+  width : 300px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+}
+
+.slide1 {
+  position: absolute;
+  color: white;
+  animation: slide 1.5s ease-out;
+  width : 350px;
+}
+.slide2 {
+  position: absolute;
+  color: white;
+  left : -700px;
+  width : 350px;
+  animation: disappear 0s ease-out;
+}
+.login-btn1{
+  position: absolute;
+  height: 45px;
+  width : 70px;
+  background-color: #323232FF;
+  border : 1px solid #4d4d4d;
+  border-radius: 4px;
+  margin-top: 10px;
+  color : #7d7d7d;
+  
+}
+
+.login-btn1:hover {
+  color : #A3A3a3;
+}
+.login-btn1:active {
+  color: white;
+}
+@keyframes slide {
+  from {
+      left : -700px;
+      opacity: 0.5;
+  }
+  to {
+      left : 0px;
+      opacity: 1;
+  }
+  
+}
+
+@keyframes disappear {
+  from {
+     
+      left : 80px;
+      opacity: 1;
+  }
+  to {
+      left : -700px;
+      opacity: 0.5;
+  }
+}

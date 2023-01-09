@@ -1,0 +1,17 @@
+1. 'npm init'으로 현지점 패키지 저장소 (package.json) 생성
+사용되는 패키지 express, mongoose, 
+bodyParser
+ -  받아온 req값을 json갑으로 받아서 특정 요청값만 받아올 수 있음
+nodemon
+ - npm run start -시 node.js 서버가 실행이되지만, nodemon을 사용하면 서버가 활성화 되어있는 동안 수정본이 바로 적용가능함
+jsonwebtoken
+ - jsonwebtoken 토큰을 생성하기위한 패키지, 해당 패키지로 웹페이지 내 토큰을 생성하여 인증보안 토큰을 생성
+cookie-parser
+ - 로그인 시 해당 사용자 정보를 세션이 넘어가도 사용하기 위해 쿠키값을 남기기위한 쿠키설정 패키지
+(cookie 안에 사용자 정보 token을 넣어 세션 변경 시에도 해당 사용자 정보를 확인하기 위해 함께 사용하는 경우가 많다.)
+auth
+ - 쿠키 내 사용자 정보를 디코딩하여 사용자가 접근가능한 공간인지 확인
+concurrently
+ - 설정한 스크립트를 불러오거나 특정 클라이언트위치를 --prefix 로 지정하여 해당 위치 패키지를 가져와 한번에 서버 클라이언트 스크립트를 실행하는 패키지
+MONGODB 정보는 .env로 저장
+비밀번호 암호화는 bcrypt
