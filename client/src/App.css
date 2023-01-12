@@ -6,7 +6,7 @@ section{
   height: 100%;
   width: 100%;
   background: url(./img/Cheers-bkgr.gif) fixed;
-  opacity: 0.9;
+  opacity: 0.8;
   background-size: 100% 100%;
   background-position: center center;
 }
@@ -92,6 +92,17 @@ section{
 }
 .login-btn1:active {
   color: white;
+}
+.loginpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #C1C1C1C1;
+  border-radius: 5px;
+  
+  width: 30%;
+  height: 70%;
+
 }
 @keyframes slide {
   from {

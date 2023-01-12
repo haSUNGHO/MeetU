@@ -32,9 +32,11 @@ app.post('/register', (req, res) => {
     });
 })
 
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
     //name으로 사용자 네임 찾기  
     User.findOne({ name: req.body.name }, (err, user) => {
+        console.log(user);
+        console.log(req.body.name);
         if (!user) {
             return res.json({
                 loginSuccess: false,
