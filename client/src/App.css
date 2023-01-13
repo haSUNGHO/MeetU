@@ -93,16 +93,73 @@ section{
 .login-btn1:active {
   color: white;
 }
-.loginpage {
+.page {
+  width:  100%;
+  height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #C1C1C1C1;
-  border-radius: 5px;
-  
-  width: 30%;
-  height: 70%;
+  justify-content: center;
+}
 
+.form {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  background-color: rgb(0,0,0, 0.7);
+  border-radius: 5px;
+  color : rgb(226, 219, 219);
+  width: 55%;
+  height: 80%; 
+
+}
+.form>input {
+  width : 77%;
+  height: 33px;
+  padding-left: 7px;
+  border : none;
+  
+  background-color: rgb(0,0,0, 0);
+  color: white;
+  
+  
+  font-size: 15px;
+  border-radius: 3px;
+  border-bottom: solid 3px #dc2e2e ;
+}
+.form>input:focus {
+  outline: none;
+}
+.form>button {
+  width: 80%;
+  height: 40px;
+  border : none;
+  color: white;
+  background-color: #dc2e2e;
+  opacity: none;
+  border-radius: 3px;
+}
+.form>label {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #dc2e2e;
+  padding-bottom: 20px;
+}
+.form>span {
+  width: 80%;
+  color: #A3A3a3;
+  margin-top : 15px;
+}
+.login_hyperlink {
+  color: white;
+  text-decoration: none;
+  cursor: pointer, underline;
+}
+.loginlogo {
+  width: 80%;
+  margin-bottom: 27px;
+  font-size: 35px;
 }
 @keyframes slide {
   from {

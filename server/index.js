@@ -21,11 +21,11 @@ mongoose.connect(process.env.MONGODB_URL, {
 }).then(() => console.log('mongoDB Connected...')).catch(err => { console.log('Mongoose Error : ' + err) });
 
 
-app.post('/register', (req, res) => {
+app.post('/api/register', (req, res) => {
     const user = new User(req.body)
 
     user.save((err, userInfo) => {
-        if (err) return res.json({ Success: false, err });
+        if (err) return res.json({ register_Success: false, err });
         return res.status(200).json({
             register_Success: true,
         })
