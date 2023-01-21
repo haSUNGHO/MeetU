@@ -1,8 +1,8 @@
 import React, { useState, useEffect }from "react";
 
+window.scrollTo(0,0);
 
 function Frontpage() {
-
     const [slide, setSlide] = useState(true);
     // const scrollSlider1 = new useRef(null);
     // const scrollSlider2 = new useRef(null);

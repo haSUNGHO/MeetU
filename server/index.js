@@ -25,9 +25,9 @@ app.post('/api/register', (req, res) => {
     const user = new User(req.body)
 
     user.save((err, userInfo) => {
-        if (err) return res.json({ register_Success: false, err });
+        if (err) return res.json({ registerSuccess: false, err });
         return res.status(200).json({
-            register_Success: true,
+            registerSuccess: true,
         })
     });
 })
@@ -35,7 +35,6 @@ app.post('/api/register', (req, res) => {
 app.post('/api/login', (req, res) => {
     //name으로 사용자 네임 찾기  
     User.findOne({ name: req.body.name }, (err, user) => {
-        console.log(user);
         console.log(req.body.name);
         if (!user) {
             return res.json({
@@ -57,12 +56,14 @@ app.post('/api/login', (req, res) => {
     })
 })
 
-app.get('/logout', auth, (req, res) =>{
+app.get('/api/logout', auth, (req, res) =>{
+    console.log('logout req : ' + req);
     User.findOneAndUpdate({_id : req.user._id},
         {token : ""}, (err, user) =>{
+            console.log(user);
             if(err) return res.json({loginSuccess :false, err});
             return res.status(200).send({
-                logout_Success : true
+                logoutSuccess : true
             })
         })
 })
@@ -70,7 +71,16 @@ app.get('/logout', auth, (req, res) =>{
 app.get('/api/hello', (req,res) =>{
     res.send('Example Success');
 })
-
-
+//auth를 통한 사용자 구분 페이지 설정
+app.get('/api/auth', auth, (req, res) => {
+    console.log('Auth Request Success' + ', _id : ' + req.user._id)
+    res.status(200).json({
+        _id : req.user._id,
+        isAuth : true,
+        role: req.user.role,
+        name : req.user.name,
+        email : req.user.email
+    })
+})
 
 app.listen(port, () => console.log(`Sever Connecting... port : ${port}`));

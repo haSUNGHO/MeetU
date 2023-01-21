@@ -5,6 +5,7 @@ import {registerUser} from '../../_actions/user_action';
 function Register() {
   const [Name, setName] = useState("");
   const [Password, setPassword] = useState("");
+  const [PasswordCheck, setPasswordCheck] = useState("");
   const [Email, setEmail] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,6 +16,9 @@ function Register() {
   }
   const onPasswordEvent = (event) => {
     setPassword(event.currentTarget.value);
+  }
+  const onPasswordCheckEvent = (event) => {
+    setPasswordCheck(event.currentTarget.value);
   }
   const onEmailEvent = (event) => {
     setEmail(event.currentTarget.value);
@@ -28,10 +32,14 @@ function Register() {
       email: Email,
       role: 1
     };
+    if(Password !== PasswordCheck) {
+      return alert("비밀번호와 비밀번호 확인이 동일하지 않습니다.");
+    }
+
     dispatch(registerUser(body)).then(response => {
-      if(response.payload.register_Success) {
-        navigate('/');
-        alert('Success!');
+      if(response.payload.registerSuccess) {
+        navigate('/login');
+        alert('회원가입을 완료하셨습니다. 다시 로그인바랍니다.');
       }else {
         alert('Error : '+ response.payload.err);
       }
@@ -46,6 +54,8 @@ function Register() {
       <label>{Name === "" ? "닉네임을 입력해주세요" : ""}</label>
       <input type="password" placeholder="패스워드" value={Password} onChange={onPasswordEvent}/>
       <label>{Password === "" ? "비밀번호를 입력해주세요" : ""}</label>
+      <input type="password" placeholder="패스워드 확인" value={PasswordCheck} onChange={onPasswordCheckEvent}/>
+      <label>{Password === PasswordCheck ? "" : "동일한 비밀번호를 입력해주세요"}</label>
       <input type="email" placeholder="이메일" value={Email} onChange={onEmailEvent}/>
       <label>{Email === "" ? "이메일을 입력해주세요" : ""}</label>
       <br />
