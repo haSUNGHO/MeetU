@@ -13,6 +13,7 @@ function App() {
   const Example = Auth(ExamplePage, true);
   const Login = Auth(LoginPage, false);
   const Register = Auth(RegisterPage, false);
+  
   return (
    <BrowserRouter>
       <div className='App'>

@@ -12,13 +12,13 @@ useEffect(() => {
         
      let value = window.scrollY;
         console.log("scrollY = " + value);
-        if (value > 400) {
+        if (value > 300) {
             // scrollSlider1.current.style.animation = "disappear 1.5s ease-out forwards";
             // scrollSlider2.current.style.animation = "slide 1.5s ease-out forwards";
             
                 // setSlider1(false);
             setSlide(false);
-        } else if (value < 400) {
+        } else if (value <= 300) {
             // scrollSlider1.current.style.animation = "slide 1.5s ease-out forwards";
             // scrollSlider2.current.style.animation = "disappear 1.5s ease-out forwards";
            
