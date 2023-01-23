@@ -39,11 +39,15 @@ function Header() {
         navigate('/');   
     }
 
+    const mapPageGo = () => {
+        navigate('/map');
+    }
+
     return (
         <div class="header-div">
             <div class="header-left"><button onClick={clicklogo}><img class="logoimage" src={require('../../../img/logo2.png')} /></button></div>
             <div class="header-center">
-                <button><img class="location-img" src={require('../../../img/pin-stage.png')}/></button>
+                <button onClick={mapPageGo}><img class="location-img" src={require('../../../img/pin-stage.png')}/></button>
                 <button><img class="search-img" src={require('../../../img/search-icon.png')}/></button>
                 <button><img class="preview-img" src={require('../../../img/preview.png')}/></button>
             </div>

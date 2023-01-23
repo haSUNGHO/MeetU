@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const { auth }= require('./Middleware/auth');
-
+const { Location } = require('./Models/Location');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -18,8 +18,27 @@ app.use(cookieParser());
 console.log('mongo : ' + process.env.MONGODB_URL);
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true, useUnifiedTopology: true
-}).then(() => console.log('mongoDB Connected...')).catch(err => { console.log('Mongoose Error : ' + err) });
+}).then(() => console.log('mongoDB Connected Success')).catch(err => { console.log('Mongoose Error : ' + err) });
 
+app.post('/api/map', (req, res) => {
+    const location = new Location(req.body)
+    location.save((err) => {
+        if(err) return res.json({ mapResponse : false});
+        return res.status(200).json({
+            mapResponse : true
+        })
+    })
+})
+
+//지역번호 입력 시 해당 지역 행정구역 response - 미완.. 안나옴
+app.post('/api/map/city', (req, res)=> {
+    Location.find({ city : req.body.locationnum }, (err, coutry)=>{
+        if(!country) {
+            return res.status(504).json({countryRes : false});
+        }
+        res.status(200).json({country});
+    })
+})
 
 app.post('/api/register', (req, res) => {
     const user = new User(req.body)

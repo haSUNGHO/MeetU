@@ -69,6 +69,18 @@ header {
   right : 0px;
   padding-right: 7px;
 }
+.header-right>button {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  border-radius: 4px;
+  background-color: rgb(33, 33, 33);
+  border : 1px solid #A3A3a3;
+  color: #A3A3A3;
+  width: 70px;
+  height: 67%;
+  
+
+}
 
 body{
   margin : 0px;
@@ -245,6 +257,12 @@ section{
   width: 80%;
   margin-bottom: 27px;
   font-size: 35px;
+}
+.mapstyle {
+    padding: 15px 15px 15px 15px;
+    width : 90%;
+    height: 90%;
+    border-radius: 4px;
 }
 @keyframes slide {
   from {

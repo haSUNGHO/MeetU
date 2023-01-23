@@ -8,12 +8,13 @@ import RegisterPage from './components/views/Register';
 import Header  from './components/views/Header/Header';
 import Nav from './components/views/NavBar/NavBar';
 import Auth from './hoc/auth';
+import MapPage from './components/views/Main/MapPage';
 function App() {
   const Landding = Auth(LandingPage, null);
   const Example = Auth(ExamplePage, true);
   const Login = Auth(LoginPage, false);
   const Register = Auth(RegisterPage, false);
-  
+  const Map = Auth(MapPage, true);
   return (
    <BrowserRouter>
       <div className='App'>
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/axios" element={<Example/>}/>
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/register' element={<Register/>}/>
+        <Route exact path='/map' element={<Map/>}/>
       </Routes>
       </div>
     </BrowserRouter>
