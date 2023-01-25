@@ -1,6 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { findcountry } from '../../../_actions/location_action';
 // const {kakao} = window;
 function Map() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    // const [locationNum, setlocationNum] = useState("");
+
+
     // 지도생성하는방법
     // useEffect(() =>{
     // var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -11,13 +19,29 @@ function Map() {
 
     // var map = new kakao.maps.Map(container, options);
     // }, [])
+    const submit = (event) => {
+        event.preventDefault();
+    }
 
-
+    const findSeoul = () => {
+        let locationNum = {
+            locationnum : 2
+        }
+        dispatch(findcountry(locationNum)).then(response => {
+            if(!response.type){
+                alert('지도정보가 전달되지 않았습니다.');
+                navigate('/map');
+            }else {
+                console.log("MAp Success!");
+                navigate('/');
+            }
+        })
+    }
 
     return (
         <div class="page">
-            <form class="form">
-                <button>서울</button>
+            <form class="form" onClick={submit}>
+                <button onClick={findSeoul}>서울</button>
                 <button>경기도</button>
                 <button>인천</button>
                 <button>강원도</button>
