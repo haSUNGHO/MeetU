@@ -32,13 +32,13 @@ app.post('/api/map', (req, res) => {
 
 //req : locationnum : 지역번호 -> res : 지역번호 정보 모두
 app.post('/api/map/city', (req, res)=> {
-    Location.find({ city : req.body.locationnum }, (err, country)=>{
-        if(err) console.log("findCityErr : "+ err);
+    Location.find({ city : req.body.locationnum }, 'country', (err, country)=>{
+        if(err)console.log("findCityErr : "+ err);
         if(!country || country === "") {
             return res.status(504).json({countryRes : false});
         }
-        console.log(`${country[0]}`);
-        res.status(200).json(`${country[0]}`);
+        console.log(country)
+        res.status(200).json(JSON.stringify(country));
     })
 })
 

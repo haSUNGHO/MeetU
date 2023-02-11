@@ -22,6 +22,7 @@ function LoginPage() {
       password: Password
     };
     dispatch(loginUser(body)).then(response => {
+      console.log("loginSuccess : " +response.payload.loginId);
       if (response.payload.loginSuccess) {
         navigate('/');
       } else {

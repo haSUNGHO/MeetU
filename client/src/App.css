@@ -212,6 +212,21 @@ section{
   height: 80%; 
 
 }
+.location_form {
+  align-self: center;
+  display:grid;
+  padding-left: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  background-color: rgb(0,0,0, 0.7);
+  border-radius: 5px;
+  color : rgb(226, 219, 219);
+  width: 40%;
+  height: 70%; 
+
+}
 .form>input {
   width : 77%;
   height: 33px;
@@ -238,6 +253,16 @@ section{
   opacity: none;
   border-radius: 3px;
 }
+.location_form>button {
+  width: 80%;
+  height: 60px;
+  border : none;
+  color: white;
+  background-color: #dc2e2e;
+  opacity: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
 .form>label {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #dc2e2e;
@@ -259,9 +284,10 @@ section{
   font-size: 35px;
 }
 .mapstyle {
+    margin-left: 10px;
     padding: 15px 15px 15px 15px;
-    width : 90%;
-    height: 90%;
+    width : 30%;
+    height: 70%;
     border-radius: 4px;
 }
 @keyframes slide {
