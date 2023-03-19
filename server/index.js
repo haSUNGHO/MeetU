@@ -20,6 +20,17 @@ mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true, useUnifiedTopology: true
 }).then(() => console.log('mongoDB Connected Success')).catch(err => { console.log('Mongoose Error : ' + err) });
 
+//가게 정보 저장하기
+app.post('/api/createstore', (req, res) => {
+    
+})
+
+//해당지역 가게정보 출력
+app.post('/api/store', (req,res) => {
+    console.log(req.body.x + " / " + req.body.y)
+})
+
+//location 추가 mongoose
 app.post('/api/map', (req, res) => {
     const location = new Location(req.body)
     location.save((err) => {
@@ -29,10 +40,18 @@ app.post('/api/map', (req, res) => {
         })
     })
 })
+//location 정보 변경 mongoose
+app.post('/api/map/change', (req, res)=> {
+    
+    let name = Location.findOneAndUpdate(req.body.country, req.body, (err)=> {
+        if(err) res.status(500).json({err});
+        else res.status(200).json({Update_Success : true});
+    })
+})
 
 //req : locationnum : 지역번호 -> res : 지역번호 정보 모두
 app.post('/api/map/city', (req, res)=> {
-    Location.find({ city : req.body.locationnum }, 'country', (err, country)=>{
+    Location.find({ city : req.body.locationnum }, 'country x y', (err, country)=>{
         if(err)console.log("findCityErr : "+ err);
         if(!country || country === "") {
             return res.status(504).json({countryRes : false});

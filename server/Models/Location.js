@@ -9,6 +9,15 @@ const locationSchema = mongoose.Schema({
         type: String,
         unique : 1,
     },
+    address : {
+        type: String
+    },
+    x : {
+        type: String
+    },
+    y : {
+        type : String
+    }
 })
 
 

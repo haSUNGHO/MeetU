@@ -212,7 +212,8 @@ section{
   height: 80%; 
 
 }
-.location_form {
+
+.location_form{
   align-self: center;
   display:grid;
   padding-left: 20px;
@@ -284,9 +285,10 @@ section{
   font-size: 35px;
 }
 .mapstyle {
+    z-index: 30;
     margin-left: 10px;
     padding: 15px 15px 15px 15px;
-    width : 30%;
+    width : 40%;
     height: 70%;
     border-radius: 4px;
 }

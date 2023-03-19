@@ -9,12 +9,14 @@ import Header  from './components/views/Header/Header';
 import Nav from './components/views/NavBar/NavBar';
 import Auth from './hoc/auth';
 import MapPage from './components/views/Main/MapPage';
+import StorePage from './components/views/Main/StorePage';
 function App() {
   const Landding = Auth(LandingPage, null);
   const Example = Auth(ExamplePage, true);
   const Login = Auth(LoginPage, false);
   const Register = Auth(RegisterPage, false);
   const Map = Auth(MapPage, true);
+  const Store = Auth(StorePage, true);
   return (
    <BrowserRouter>
       <div className='App'>
@@ -25,6 +27,7 @@ function App() {
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/register' element={<Register/>}/>
         <Route exact path='/map' element={<Map/>}/>
+        <Route exact path='/store' element={<Store/>}/>
       </Routes>
       </div>
     </BrowserRouter>
