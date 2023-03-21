@@ -10,6 +10,7 @@ import Nav from './components/views/NavBar/NavBar';
 import Auth from './hoc/auth';
 import MapPage from './components/views/Main/MapPage';
 import StorePage from './components/views/Main/StorePage';
+
 function App() {
   const Landding = Auth(LandingPage, null);
   const Example = Auth(ExamplePage, true);

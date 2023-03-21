@@ -6,7 +6,7 @@ import { findStore } from "../../../_actions/location_action";
 function Store() {
     const location = useLocation();
     const dispatch = useDispatch();
-    dispatch(findStore(location.state.x, location.state.y)).then({
+    dispatch(findStore(location.state.country)).then({
         
     })
     return (

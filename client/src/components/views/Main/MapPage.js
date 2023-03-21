@@ -81,8 +81,7 @@ function Map() {
     }
     const onClickgoMap = (event) =>{
         console.log(event.target.value)
-        const xy = event.target.value.split(",")
-        navigate('/Store', {state : {x : xy[0], y : xy[1]}})
+        navigate('/Store', {state : {country : event.target.value}})
     }
 
     return (
@@ -109,7 +108,7 @@ function Map() {
                 </form>
                 :
                 <form class="location_form" onClick={golocal}>
-                    {countryList.map((el) => <button onMouseOver={onMousehover} onClick={onClickgoMap} value={el.x + "," + el.y}>{el.country}</button>)}
+                    {countryList.map((el) => <button onMouseOver={onMousehover} onClick={onClickgoMap} value={el.country}>{el.country}</button>)}
                 </form>}
                 <div id="map" class="mapstyle" value="3"></div>
             

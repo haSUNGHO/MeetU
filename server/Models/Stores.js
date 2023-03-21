@@ -14,7 +14,7 @@ const storeSchema = mongoose.Schema({
         type : String,
         unique : 1,
     },
-    storeNumber : {
+    storenumber : {
         type : String
     },
     reviewpoint : {
@@ -25,3 +25,7 @@ const storeSchema = mongoose.Schema({
         type : [String]
     }
 })
+
+
+const Stores = mongoose.model('stores', storeSchema);
+module.exports = { Stores };

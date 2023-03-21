@@ -8,6 +8,7 @@ const dotenv = require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const { auth }= require('./Middleware/auth');
 const { Location } = require('./Models/Location');
+const { Stores } = require('./Models/Stores');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -22,12 +23,21 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 //가게 정보 저장하기
 app.post('/api/createstore', (req, res) => {
-    
+    let createstore = new Stores(req.body);
+    createstore.save((err)=> {
+        if(err) return res.json({Storeinsert : false, 
+                                 ErrorMSg : err});
+        return res.status(200).json({Storeinsert : true});
+    })
 })
 
 //해당지역 가게정보 출력
 app.post('/api/store', (req,res) => {
-    console.log(req.body.x + " / " + req.body.y)
+    console.log(req.body.addr)
+    Stores.find({address : "/"+req.body.addr + "/"}, (err, stores) =>{
+        if(err) res.status(400).json({errMSg : err});
+        res.status(200).json(stores)
+    })
 })
 
 //location 추가 mongoose
