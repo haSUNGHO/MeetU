@@ -16,8 +16,7 @@ export function findcountry(body) {
 export function findStore(country) {
     const body = {addr : country}
     let req = axios.post('/api/store', body).then((res) =>{
-        console.log(res)
-        // return JSON.parse(res.data)
+        return JSON.parse(res.data);
     })
     return {
         type : FIND_STORE,

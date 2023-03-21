@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { render } from "react-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../../_actions/user_action";

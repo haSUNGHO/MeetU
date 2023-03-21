@@ -34,9 +34,16 @@ app.post('/api/createstore', (req, res) => {
 //해당지역 가게정보 출력
 app.post('/api/store', (req,res) => {
     console.log(req.body.addr)
-    Stores.find({address : "/"+req.body.addr + "/"}, (err, stores) =>{
+    Stores.find({address :{ $regex : '.*' + req.body.addr + '.*'}}, (err, stores) =>{
         if(err) res.status(400).json({errMSg : err});
-        res.status(200).json(stores)
+        if(!stores || stores.length === 0){
+            res.status(400).json({
+                errMSG : "해당 지역에 정보가 없거나 데이터를 불러오지 못하였습니다."
+            })
+        }
+        res.status(200).json(
+            JSON.stringify(stores)
+        )
     })
 })
 
