@@ -3,16 +3,47 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { findcountry, findStore } from '../../../_actions/location_action';
 const { kakao } = window;
-function setlocation(map, x, y) {
-    console.log("X : "+ x + ", Y : "+y)
-      // 이동할 위도 경도 위치를 생성합니다 
-      var moveLatLng = new kakao.maps.LatLng(x, y);
-      // 지도 중심을 이동 시킵니다
-      var marker = new kakao.maps.Marker({
-        position : moveLatLng
-      });
-      marker.setMap(map);
-      map.setCenter(moveLatLng);
+function setlocation(map, value) {
+    console.log(value);
+
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    // 주소로 좌표를 검색합니다
+    geocoder.addressSearch(value, function (result, status) {
+
+        // 정상적으로 검색이 완료됐으면 
+        if (status === kakao.maps.services.Status.OK) {
+
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: coords
+            });
+
+            // 인포윈도우로 장소에 대한 설명을 표시합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                content: '<div style="width:150px;text-align:center;padding:6px 0;">'+value +'</div>'
+            });
+            infowindow.open(map, marker);
+
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords);
+        }
+    });
+
+
+
+    // // 이동할 위도 경도 위치를 생성합니다 
+    // var moveLatLng = new kakao.maps.LatLng(x, y);
+    // // 지도 중심을 이동 시킵니다
+    // var marker = new kakao.maps.Marker({
+    //     position: moveLatLng
+    // });
+    // marker.setMap(map);
+    // map.setCenter(moveLatLng);
 }
 
 function Map() {
@@ -30,9 +61,9 @@ function Map() {
             scrollwheel: false
         };
         kakaomap = new kakao.maps.Map(container, options);
-        
+
     })
-    
+
     console.log(kakaomap)
     const submit = (event) => {
         event.preventDefault();
@@ -75,13 +106,11 @@ function Map() {
         var mapcon = document.getElementById('map');
         console.log("mouseHover :)")
         console.log(event.target.value)
-        const xy = event.target.value.split(",")
-        
-        setlocation(kakaomap, xy[0], xy[1])
+        setlocation(kakaomap, event.target.value)
     }
-    const onClickgoMap = (event) =>{
+    const onClickgoMap = (event) => {
         console.log(event.target.value)
-        navigate('/Store', {state : {country : event.target.value}})
+        navigate('/Store', { state: { country: event.target.value } })
     }
 
     return (
@@ -110,9 +139,9 @@ function Map() {
                 <form class="location_form" onClick={golocal}>
                     {countryList.map((el) => <button onMouseOver={onMousehover} onClick={onClickgoMap} value={el.country}>{el.country}</button>)}
                 </form>}
-                <div id="map" class="mapstyle" value="3"></div>
-            
-            
+            <div id="map" class="mapstyle" value="3"></div>
+
+
         </div>
     )
 }

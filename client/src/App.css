@@ -274,6 +274,40 @@ section{
   color: #A3A3a3;
   margin-top : 15px;
 }
+.store_form {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  align-items :first baseline;
+  background-color: rgb(0,0,0, 0.7);
+  border-radius: 5px;
+  color : rgb(226, 219, 219);
+  width: 55%;
+  height: 80%;
+  padding-left: 20px; 
+}
+.store_form>button { 
+  width: 60%;
+  height: 10%;
+  position: relative;
+  padding-top: 10px;
+  background-color: rgb(256,256,256, 0);
+  font-family: Arial, Helvetica, sans-serif;
+  color : rgb(210,153,255, 0.7);
+  border-radius: 8px;
+  border : 0px;
+}
+.store_form>button>img {
+  position: absolute;
+  left : 5px;
+  top : 5px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 3px;
+}
 .login_hyperlink {
   color: white;
   text-decoration: none;
